@@ -9,28 +9,66 @@ import XCTest
 @testable import todo
 
 final class todoTests: XCTestCase {
-
+    
+    var viewModel: TodoViewModel?
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = TodoViewModel()
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewModel = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testAdd() {
+        
+        let expectation = XCTestExpectation(description: "Todo update called")
+        viewModel?.onTodosUpdated = {
+            expectation.fulfill()
         }
+        
+        viewModel?.addTodo(title: "Hey", colorHex: "#ffffff")
+        
+        XCTAssertEqual(viewModel?.count, 1)
+        XCTAssertEqual(viewModel?.getTodo(at: 0)?.title, "Hey")
+        XCTAssertEqual(viewModel?.getTodo(at: 0)?.colorHex, "#ffffff")
+        
+        wait(for: [expectation], timeout: 1)
+        
     }
-
+    
+    func testUpdate() {
+        
+        viewModel?.addTodo(title: "Hey-1", colorHex: "#ffffff")
+        
+        guard let id = viewModel?.getTodo(at: 0)?.id else {
+            XCTFail("No ID found")
+            return
+        }
+        
+        viewModel?.updateTodo(id: id, newTitle: "Hey-2", newColorHex: "#fffffe")
+        
+        XCTAssertEqual(viewModel?.count, 1)
+        XCTAssertEqual(viewModel?.getTodo(at: 0)?.title, "Hey-2")
+        XCTAssertEqual(viewModel?.getTodo(at: 0)?.colorHex, "#fffffe")
+        
+        
+    }
+    
+    func testDelete() {
+        
+        viewModel?.addTodo(title: "Hey-3", colorHex: "#ffffff")
+        
+        let intialCount = viewModel?.count
+        
+        guard let id = viewModel?.getTodo(at: 0)?.id else {
+            XCTFail("No ID found")
+            return
+        }
+        
+        viewModel?.deleteTodo(id: id)
+        
+        XCTAssertEqual(viewModel?.count, (intialCount ?? 0) - 1)
+    }
+    
 }
