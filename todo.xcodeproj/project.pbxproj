@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		54F229532DE489F8004AD2E2 /* iOS_TODO_App_Interview_Prep.docx in Resources */ = {isa = PBXBuildFile; fileRef = 54F229522DE489F8004AD2E2 /* iOS_TODO_App_Interview_Prep.docx */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		54F2292D2DE1CBCE004AD2E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		54F229132DE1CBCC004AD2E2 /* todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F2292C2DE1CBCE004AD2E2 /* todoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F229362DE1CBCE004AD2E2 /* todoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F229522DE489F8004AD2E2 /* iOS_TODO_App_Interview_Prep.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = iOS_TODO_App_Interview_Prep.docx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -83,6 +88,7 @@
 		54F2290A2DE1CBCC004AD2E2 = {
 			isa = PBXGroup;
 			children = (
+				54F229522DE489F8004AD2E2 /* iOS_TODO_App_Interview_Prep.docx */,
 				54F229152DE1CBCC004AD2E2 /* todo */,
 				54F2292F2DE1CBCE004AD2E2 /* todoTests */,
 				54F229142DE1CBCC004AD2E2 /* Products */,
@@ -216,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F229532DE489F8004AD2E2 /* iOS_TODO_App_Interview_Prep.docx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
